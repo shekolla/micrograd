@@ -93,6 +93,7 @@ class Value:
                     build(child)
                 topo.append(root)
         
+        build(self)
         # set grad to 1.0 before initialing Backpropagation
         self.grad = 1.0
         for node in reversed(topo):
