@@ -1,0 +1,1 @@
+Micrograd rough practice
