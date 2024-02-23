@@ -82,7 +82,21 @@ class Value:
         return out
 
 
-
+    def backward(self):
+        topo = []
+        visited = set()
+        # recurrsion func for order of execution
+        def build(root):
+            if (root not in visited):
+                visited.add(root)
+                for child in root._prev:
+                    build(child)
+                topo.append(root)
+        
+        # set grad to 1.0 before initialing Backpropagation
+        self.grad = 1.0
+        for node in reversed(topo):
+            node._backward()
     
     # handle how negative sign
     def __neg__(self):
